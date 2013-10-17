@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no,width=device-width" />
+<title>The Regular Game</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+  <script type="text/x-handlebars">
+    <div id="mainContainer">
+      <header>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="brand">Regular Game</div>
+          </div>
+        </div>
+      </header>
+      <div id="mainContent">
+        <div class="row">
+          <div class="span4">{{outlet sidebar}}</div>
+          <div class="span8">{{outlet}}</div>
+        </div>
+        <footer>
+          <div class="well">
+            {{outlet footer}}
+          </div>
+        </footer>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-handlebars" id="index">
+    <h2> The Regular Game </h2>
+    
+    <h4>Click on any card, the timer will start, and match away. Good Luck!</h4>
+    <hr />
+    {{#link-to 'game'}}<button class="btn">I AM READY TO PLAY</button>{{/link-to}}
+  </script>
+ <script type="text/x-handlebars" id="sidebar">
+    <h3>Check out the show</h3>
+    <iframe width="100%" height="315" src="//www.youtube.com/embed/E5Mh4ieRI1Q" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src="//www.youtube.com/embed/yV8kTjRpYAc" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src="//www.youtube.com/embed/IWeOHK64ea8" frameborder="0" allowfullscreen></iframe>
+  </script>
+  <script type="text/x-handlebars" id="footer">
+    Design and built by <strong>Hoffman</strong> Production <em>on the Emberjs and bootstrap frameworks</em>
+  </script>
+
+  <script type="text/x-handlebars" id="game">
+
+    <button class="btn" {{bind-attr disabled=endGameDisabled}} {{action 'resetGame'}}>END GAME</button>
+    <p>{{#if playingGame}}{{{numberWrongGamePlay}}}{{else}}How many will you get wrong?{{/if}}</p>
+    <hr />
+    <div class="progress progress-striped active">
+      <div class="bar"></div>
+    </div>
+    <div id="cardContent">
+      {{view App.gameView}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="gameView">
+    {{#each itemController='GameCard'}}
+        <button {{bind-attr alt="this.cardPosition" class="this.id :card" }} {{action 'flip' this}}></button>
+      {{/each}}
+      <div class="stretch"></div>
+  </script>
+
+   <script type="text/x-handlebars" id="gameOver">
+    <h4>GAME OVER</h4>
+    <p>{{{numberWrong}}}</p>
+    <p>{{{numberRight}}}</p>
+    <hr />
+    {{{displayGameEndMessage}}}
+    <hr />
+    <button class="btn" {{action 'newGame'}}>NEW GAME</button>
+  </script>
+
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/jqueryui.js"></script>
+  <script src="js/libs/jquery.flip.min.js"></script>
+  <script src="js/libs/handlebars-1.0.0.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.8.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ember-data.js/0.13.0/ember-data-latest.min.js"></script>  
+  <script src="js/libs/showdown.js"></script>
+  <script src="js/libs/moment.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

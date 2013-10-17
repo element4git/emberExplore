@@ -1,0 +1,53 @@
+/* Put your CSS here */
+html, body {
+    margin: 20px;
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media (max-width: 600px) {
+	.span4{display:none !important;}
+}
+
+#cardContent{
+	max-width:800px;
+	height: 600px;
+	text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    margin:0 60px;
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+.card{
+	width:150px; 
+	height:150px;
+	margin-bottom:5px;
+	background-color:#666; 
+	background-image:url('../images/regularshow-sprite.jpg'); 
+	border:none;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.matched{visibility: hidden;}
+
+
+.c150{background-position:-150px;}
+.c300{background-position:-300px;}
+.c450{background-position:-450px;}
+.c600{background-position:-600px;}
+.c750{background-position:-750px;}
+.c900{background-position:-900px;}
+.c1050{background-position:-1050px;}
+.c1200{background-position:-1200px;}
+
+footer{margin-top:40px;}
